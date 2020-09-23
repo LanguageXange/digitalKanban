@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kabooom!</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav id="nav">
+      <ul>
+        <li>
+          <a href="#home">HOME</a>
+        </li>
+        <li>
+          <a href="#about">FEATURES</a>
+        </li>
+        <li>
+          <a href="#projects">TRY IT NOW</a>
+        </li>
+      </ul>
+    </nav>
+    <!-- dark light Mode Switch -->
+    <div class="theme-switch-wrapper">
+      <span id="toggle-icon">
+        <i class="fas fa-sun sun"></i>
+      </span>
+      <label class="theme-switch">
+        <input type="checkbox" />
+        <div class="slider round"></div>
+      </label>
+    </div>
+
+    <!-- Home Section -->
+    <section id="home">
+      <div class="title-group">
+        <h1>Digital Kanban Board</h1>
+        <span id="input"></span>
+        <span id="cursor"> /</span>
+      </div>
+    </section>
+    <!-- About Section -->
+    <section id="about">
+      <h1>FEATURES</h1>
+      <div class="about-container">
+        <div class="image-container">
+          <h2>Add Tasks</h2>
+
+          <img src="img/add_light.svg" alt="Add post" id="image1" />
+        </div>
+        <div class="image-container">
+          <h2>Easy Update</h2>
+          <img src="img/update_light.svg" alt="Update post" id="image2" />
+        </div>
+        <div class="image-container">
+          <h2>Track Progress</h2>
+          <img src="img/track_light.svg" alt="Track progress" id="image3" />
+        </div>
+      </div>
+    </section>
+    <!-- Projects Section -->
+    <section id="projects">
+      <h1>Try It Now!⚡</h1>
+      <div class="drag-container">
+        <ul class="drag-list">
+          <!-- BackBurner Column -->
+          <li class="drag-column backlog-column">
+            <span class="header">
+              <h1>Back Burner</h1>
+            </span>
+            <!-- Backlog Content -->
+            <div id="backlog-content" class="custom-scroll">
+              <ul
+                class="drag-item-list"
+                id="backlog-list"
+                ondrop="drop(event)"
+                ondragover="allowDrop(event)"
+                ondragenter="dragEnter(0)"
+              ></ul>
+            </div>
+            <!-- Add Button Group -->
+            <div class="add-btn-group">
+              <div class="add-btn" onclick="showInputBox(0)">
+                <span class="plus-sign">+</span>
+                <span>Add Item</span>
+              </div>
+              <div class="add-btn solid" onclick="hideInputBox(0)">
+                <span>Save Item</span>
+              </div>
+            </div>
+            <div class="add-container">
+              <div class="add-item" contenteditable="true"></div>
+            </div>
+          </li>
+          <!-- Progress Column -->
+          <li class="drag-column progress-column">
+            <span class="header">
+              <h1>In Progress</h1>
+            </span>
+            <!-- Progress Content -->
+            <div id="progress-content" class="custom-scroll">
+              <ul
+                class="drag-item-list"
+                id="progress-list"
+                ondrop="drop(event)"
+                ondragover="allowDrop(event)"
+                ondragenter="dragEnter(1)"
+              ></ul>
+            </div>
+            <!-- Add Button Group -->
+            <div class="add-btn-group">
+              <div class="add-btn" onclick="showInputBox(1)">
+                <span class="plus-sign">+</span>
+                <span>Add Item</span>
+              </div>
+              <div class="add-btn solid" onclick="hideInputBox(1)">
+                <span>Save Item</span>
+              </div>
+            </div>
+            <div class="add-container">
+              <div class="add-item" contenteditable="true"></div>
+            </div>
+          </li>
+          <!-- Code Review Column -->
+          <li class="drag-column on-hold-column">
+            <span class="header">
+              <h1>Code Review</h1>
+            </span>
+            <!-- Code review Content -->
+            <div id="on-hold-content" class="custom-scroll">
+              <ul
+                class="drag-item-list"
+                id="on-hold-list"
+                ondrop="drop(event)"
+                ondragover="allowDrop(event)"
+                ondragenter="dragEnter(2)"
+              ></ul>
+            </div>
+            <!-- Add Button Group -->
+            <div class="add-btn-group">
+              <div class="add-btn" onclick="showInputBox(2)">
+                <span class="plus-sign">+</span>
+                <span>Add Item</span>
+              </div>
+              <div class="add-btn solid" onclick="hideInputBox(2)">
+                <span>Save Item</span>
+              </div>
+            </div>
+            <div class="add-container">
+              <div class="add-item" contenteditable="true"></div>
+            </div>
+          </li>
+          <!-- Complete Column -->
+          <li class="drag-column complete-column">
+            <span class="header">
+              <h1>Complete</h1>
+            </span>
+            <!-- Complete Content -->
+            <div id="complete-content" class="custom-scroll">
+              <ul
+                class="drag-item-list"
+                id="complete-list"
+                ondrop="drop(event)"
+                ondragover="allowDrop(event)"
+                ondragenter="dragEnter(3)"
+              ></ul>
+            </div>
+            <!-- Add Button Group -->
+            <div class="add-btn-group">
+              <div class="add-btn" onclick="showInputBox(3)">
+                <span class="plus-sign">+</span>
+                <span>Add Item</span>
+              </div>
+              <div class="add-btn solid" onclick="hideInputBox(3)">
+                <span>Save Item</span>
+              </div>
+            </div>
+            <div class="add-container">
+              <div class="add-item" contenteditable="true"></div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="news-container" id="news">
+      <div class="news-header">
+        <button class="close-btn" id="close">✕</button>
+        <h4>Unlock exclusive offer</h4>
+      </div>
+      <div class="news-body">
+        <form onsubmit="subscribe()">
+          <input type="email" placeholder="Enter your email address" required />
+          <button class="submit-btn" type="submit">Give Me now!</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
